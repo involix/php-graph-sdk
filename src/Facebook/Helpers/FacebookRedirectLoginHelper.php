@@ -141,6 +141,17 @@ class FacebookRedirectLoginHelper
     {
         return $this->makeUrl($redirectUrl, $scope, [], $separator);
     }
+    
+    public function makeUrlWithParameters($redirectUrl, $state, array $scope, array $params = [], $separator = '&')
+    {
+        return $this->oAuth2Client->getAuthorizationUrl($redirectUrl, $state, $scope, $params, $separator);
+    }
+
+
+    public function getLoginUrlWithParameters($redirectUrl, $state, array $scope = [], $separator = '&')
+    {
+        return $this->makeUrlWithParameters($redirectUrl, $state, $scope, [], $separator);
+    }
 
     /**
      * Returns the URL to send the user in order to log out of Facebook.
